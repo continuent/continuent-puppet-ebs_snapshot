@@ -20,7 +20,7 @@
 class continuent_ebs_snapshot {
 
 
-    file { '/tmp/install_binarues':
+    file { '/tmp/install_binaries':
       ensure => file,
       owner => 'root',
       mode => 700,
@@ -28,7 +28,7 @@ class continuent_ebs_snapshot {
     } ->
     exec { "install_binaries":
       command => "/tmp/install_binaries",
-      creates => "usr/local/bin/ec2-consistent-snapshot"
+      creates => "/usr/local/bin/ec2-consistent-snapshot"
     }
 
 
