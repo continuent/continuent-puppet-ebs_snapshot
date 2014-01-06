@@ -1,0 +1,28 @@
+#!/bin/bash
+
+
+yum --enablerepo=epel install perl-Net-Amazon-EC2 \
+perl-File-Slurp perl-DBI perl-DBD-MySQL perl-Net-SSLeay \
+perl-IO-Socket-SSL perl-Time-HiRes perl-Params-Validate \
+perl-DateTime-Format-ISO8601 perl-Date-Manip perl-Moose \
+ca-certificates
+
+
+mkdir /tmp/download
+cd /tmp/download
+
+wget -O ec2-consistent-snapshot.zip \
+https://github.com/alestic/ec2-consistent-snapshot/archive/master.zip
+
+wget -O ec2-expire-snapshots.zip \
+https://github.com/alestic/ec2-expire-snapshots/archive/master.zip
+
+unzip ec2-consistent-snapshot.zip
+unzip ec2-expire-snapshots.zip
+
+sudo cp ec2-consistent-snapshot-master/ec2-consistent-snapshot \
+/usr/local/bin/
+sudo cp ec2-expire-snapshots-master/ec2-expire-snapshots \
+/usr/local/bin/
+
+rm -rf /tmp/download
