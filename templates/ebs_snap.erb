@@ -1,0 +1,11 @@
+#!/bin/bash 
+
+LOG=/var/log/ebs_snap.log
+echo "Snapshot running @ $(date +'%Y-%m-%d %H:%M:%S')" >> $LOG
+VOL=$1
+DIR=$2
+REGION=$3
+
+source /root/.bash_profile
+/usr/local/bin/ec2-consistent-snapshot   --freeze-filesystem $DIR --region $REGION  --description "$(hostname) snapshot of $DIR -  $(date +'%Y-%m-%d %H:%M:%S')"   $VOL 2>&1 >> $LOG
+/usr/local/bin/ec2-expire-snapshots --region $REGION  --keep-most-recent 5  $VOL 2>&1 >> $LOG
