@@ -1,4 +1,4 @@
-class continuent_ebs_snapshot::install(
+class ebs_snapshot::install(
 ) {
 
 
@@ -8,7 +8,7 @@ class continuent_ebs_snapshot::install(
       ensure => file,
       owner => 'root',
       mode => 700,
-      content => template('continuent_ebs_snapshot/install_binaries.erb')
+      content => template('ebs_snapshot/install_binaries.erb')
     } ->
     exec { "install_binaries":
       command => "/tmp/install_binaries",
@@ -19,7 +19,7 @@ class continuent_ebs_snapshot::install(
       ensure => file,
       owner => 'root',
       mode => 700,
-      content => template('continuent_ebs_snapshot/ebs_snap.erb')
+      content => template('ebs_snapshot/ebs_snap.erb')
     }
 
 }

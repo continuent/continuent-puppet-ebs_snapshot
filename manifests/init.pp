@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-class continuent_ebs_snapshot {
+class ebs_snapshot {
 
 
 
